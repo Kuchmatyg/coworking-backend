@@ -1,4 +1,4 @@
-from django.urls import path
+
 
 from booking.views import BookingListView, BookingCreateView, GetClassroomBookingsView, UserBookingsView
 
