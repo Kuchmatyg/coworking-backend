@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from pycparser.ply.yacc import token
 from rest_framework import generics, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -8,8 +7,8 @@ import time
 from rest_framework_simplejwt.views import TokenRefreshView
 from django.contrib.auth.models import update_last_login
 
-from users.models import CustomUser
-from users.serializers import LoginSerializer, CustomUserSerializer, RegistrationSerializer
+from users.models import CustomUser, Group
+from users.serializers import LoginSerializer, CustomUserSerializer, RegistrationSerializer, GroupSerializer
 
 
 class LoginView(generics.GenericAPIView):
@@ -94,3 +93,7 @@ class AuthView(generics.GenericAPIView):
 
         except Exception as e:
             return Response({"message": f"{e}"}, status=status.HTTP_400_BAD_REQUEST)
+
+class GroupList(generics.ListAPIView):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
