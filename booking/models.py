@@ -18,7 +18,7 @@ class Classroom(models.Model):
 class Booking(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     classroom = models.ForeignKey(Classroom, related_name='bookings', on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, related_name='bookings', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, related_name='user', on_delete=models.CASCADE)
     date = models.DateField()
     from_time = models.PositiveIntegerField()
     to_time = models.PositiveIntegerField()

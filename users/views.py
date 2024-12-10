@@ -68,9 +68,14 @@ class RegistrationView(generics.GenericAPIView):
             group = group,
 
         )
+        user_serializer = CustomUserSerializer(user)
+        tokens = user.get_token()
 
-        return Response({"message": "Успешная регистрация"},
-                        status=status.HTTP_200_OK)
+        return Response({
+            "user": user_serializer.data,
+            "tokens": tokens
+        },
+            status=status.HTTP_200_OK)
 
 
 class CustomTokenRefreshView(TokenRefreshView):
