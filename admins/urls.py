@@ -10,10 +10,10 @@ urlpatterns = [
     path('users/filter', FilterUsersView.as_view(), name='filter_users'),
     path('get_all', GetAll.as_view(), name='get_all'),
 
-    path('groups/create', CreateGroupView.as_view(), name='create-group'), #+
+    path('groups/create', CreateGroupView.as_view(), name='create-group'),
     path('classrooms/create', CreateClassroomView.as_view(), name='create-classroom'),
 
-    path('groups/update/<uuid:id>', UpdateGroupView.as_view(), name='update-group'),
+    path('groups/update/<uuid:id>', UpdateGroupView.as_view(), name='update-group'), # +
     path('classrooms/update/<uuid:id>', UpdateClassroomView.as_view(), name='update-classroom'),
     path('bookings/update/<uuid:id>', UpdateBookingView.as_view(), name='update-booking'),
 
