@@ -4,11 +4,10 @@ from users.models import CustomUser, Group
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
-    isAdmin = serializers.BooleanField(source="is_admin")
 
     class Meta:
         model = CustomUser
-        fields = ["id", "email", "name" ,"isAdmin"]
+        fields = ["id", "email", "name" ,"is_staff"]
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:

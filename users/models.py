@@ -24,14 +24,14 @@ class Group(models.Model):
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None,**extra_fields):
         email = self.normalize_email(email)
-        user = self.model(email=email, is_admin=False, **extra_fields)
+        user = self.model(email=email, is_staff=False, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
     def create_superuser(self, email, password, **extra_fields):
-        extra_fields.setdefault('is_admin', True)
+        extra_fields.setdefault('is_staff', True)
 
         return self.create_user(email, password, **extra_fields)
 
@@ -57,7 +57,7 @@ class CustomUser(AbstractBaseUser):
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=255)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
-    is_admin = models.BooleanField()
+    is_staff = models.BooleanField()
 
     objects = CustomUserManager()
     all_objects = AllUsersManager()

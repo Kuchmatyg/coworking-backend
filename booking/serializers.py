@@ -10,6 +10,7 @@ class ClassroomSerializer(serializers.ModelSerializer):
 
 class BookingSerializer(serializers.ModelSerializer):
     date = serializers.DateField(format="%d.%m.%Y", input_formats=["%d.%m.%Y"])
+    classroom = ClassroomSerializer()
 
     class Meta:
         model = Booking
