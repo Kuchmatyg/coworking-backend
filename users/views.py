@@ -55,6 +55,7 @@ class RegistrationView(generics.GenericAPIView):
 
         email = serializer.validated_data['email']
         password = serializer.validated_data['password']
+        name = serializer.validated_data['name']
         group = serializer.validated_data['group']
 
         if CustomUser.objects.filter(email=email).exists():
@@ -65,6 +66,7 @@ class RegistrationView(generics.GenericAPIView):
         user = CustomUser.objects.create_user(
             email=email,
             password=password,
+            name=name,
             group = group,
 
         )
