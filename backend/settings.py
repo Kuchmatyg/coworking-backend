@@ -92,6 +92,7 @@ REST_FRAMEWORK = {
     'UPLOADED_FILES_USE_URL': True,
 }
 
+AUTH_USER_MODEL = "users.CustomUser"
 
 SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": True,

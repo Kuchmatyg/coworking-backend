@@ -54,13 +54,15 @@ class CustomUser(AbstractBaseUser):
         unique=True
     )
 
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     name = models.CharField(max_length=255)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
     is_admin = models.BooleanField()
 
     objects = CustomUserManager()
     all_objects = AllUsersManager()
+
+    USERNAME_FIELD = 'email'
 
     def __str__(self):
         return self.email
