@@ -10,7 +10,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ["id", "email", "name" ,"isAdmin"]
 
-class GrouSerializer(serializers.ModelSerializer):
+class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
         fields = '__all__'
