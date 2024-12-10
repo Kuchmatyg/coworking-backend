@@ -9,5 +9,6 @@ urlpatterns = [
     path('registration', RegistrationView.as_view(), name='registration'),
     path('auth', AuthView.as_view(), name='auth'),
     path('refresh', CustomTokenRefreshView.as_view(), name='refresh'),
-    path('groups', GroupList.as_view(), name='groups')
+    path('groups', GroupList.as_view(), name='groups'),
+
 ]
