@@ -1,27 +1,17 @@
-from django.shortcuts import render
 from rest_framework import generics, permissions
-from .models import Classroom
-from .serializers import ClassroomSerializer
+from .models import Classroom, Booking
+from .serializers import ClassroomSerializer, BookingSerializer, BookingCreateSerializer
 
 
-# Доступ для всех пользователей (только просмотр)
-class ClassroomListView(generics.ListCreateAPIView):
-    queryset = Classroom.objects.all()
-    serializer_class = ClassroomSerializer
+class BookingListView(generics.ListAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
 
-    def get_permissions(self):
-        if self.request.method == 'POST':
-            return [permissions.IsAdminUser()]
-        return [permissions.AllowAny()]
-    
-# Доступ к конкретому помещению
-class ClassroomDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Classroom.objects.all()
-    serializer_class = ClassroomSerializer
 
-    def get_permissions(self):
-        if self.request.method in ['PUT', 'DELETE']:
-            return [permissions.IsAdminUser]
-        return [permissions.AllowAny()]
+class BookingCreateView(generics.CreateAPIView):
+    serializer_class = BookingCreateSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
     
     
