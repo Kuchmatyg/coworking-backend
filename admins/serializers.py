@@ -1,15 +1,14 @@
 from rest_framework import serializers
+
+from booking.serializers import BookingSerializer, ClassroomSerializer
 from users.models import CustomUser, Group
+from users.serializers import CustomUserSerializer, GroupSerializer
 
 
-class CustomUserSerializer(serializers.ModelSerializer):
-    isAdmin = serializers.BooleanField(source="is_admin")
+class GetAllSerializer(serializers.Serializer):
+    users = CustomUserSerializer(many=True)
+    groups = GroupSerializer(many=True)
+    booking = BookingSerializer(many=True)
+    classrooms = ClassroomSerializer(many=True)
 
-    class Meta:
-        model = CustomUser
-        fields = ['id', 'email', 'name', 'group', 'isAdmin']
 
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Group
-        fields = '__all__'
