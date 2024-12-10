@@ -24,5 +24,6 @@ class Booking(models.Model):
     to_time = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    purpose = models.CharField()
 
 

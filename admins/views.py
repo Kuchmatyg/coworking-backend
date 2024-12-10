@@ -9,7 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from admins.serializers import GetAllSerializer
 from booking.models import Booking, Classroom
-from booking.serializers import ClassroomSerializer, BookingSerializer
+from booking.serializers import ClassroomSerializer, BookingSerializer, BookingCreateSerializer
 from users.models import CustomUser, Group
 from users.serializers import CustomUserSerializer, GroupSerializer
 from admins.filters import CustomUserFilter
