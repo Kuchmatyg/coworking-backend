@@ -13,11 +13,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 
 import os
-from dotenv import load_dotenv
-# import environ
-
-# env = environ.Env()
-# environ.Env.read_env()
 
 
 
@@ -47,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'booking',
+
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -84,20 +81,13 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
         #'NAME': BASE_DIR / 'db.sqlite3',
 
-# print("DB_NAME:", env('DB_NAME'))
-print("DB_USER:", f"{os.getenv('DB_NAME')}")
-        # 'NAME': os.getenv('DB_NAME'),
-        # 'USER': os.getenv('DB_USER'),
-        # 'PASSWORD': os.getenv('DB_PASSWORD'),
-        # 'HOST': os.getenv('DB_HOST'),
-        # 'PORT': os.getenv('DB_PORT'),
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'coworking_booking',
-        'USER': 'project_user',
-        'PASSWORD': '1111',  # Явно укажите пароль здесь
+        'USER': 'postgres',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
     }
