@@ -1,6 +1,10 @@
-from django.urls import path
-# from .views import
+
+
+from booking.views import BookingListView, BookingCreateView, GetClassroomBookingsView, UserBookingsView
 
 urlpatterns = [
-    # Здесь ваши маршруты
+    path('', BookingListView.as_view(), name="booking"),
+    path('create', BookingCreateView.as_view(), name='create_booking'),
+    path('booked', GetClassroomBookingsView.as_view(), name='get_classroom_bookings'),
+    path('my', UserBookingsView.as_view(), name='user_bookings'),
 ]
